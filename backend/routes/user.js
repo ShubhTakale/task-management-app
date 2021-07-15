@@ -2,33 +2,32 @@ const express = require("express");
 const userRouter = express.Router();
 const db = require("../db");
 const crypto = require("crypto-js");
-const jwt = require('jsonwebtoken')
-const config = require('../config')
+const jwt = require("jsonwebtoken");
+const config = require("../config");
 
 userRouter.get("/user/profile", (request, response) => {
-    const id = request.userId;
-
-    const statement = `select id, fullName, contact, email from users where id = '${id}'`;
-    db.execute(statement, (error, users) => {
-      const result = { status: "" };
-  
-      if (error) {
+  const id = request.userId;
+  console.log("user profile called");
+  const statement = `select id, fullName, contact, email from users where id = '${id}'`;
+  db.execute(statement, (error, users) => {
+    const result = { status: "" };
+    console.log(users);
+    if (error) {
+      result["status"] = "error";
+      result["error"] = error;
+      console.log("user profile err");
+    } else {
+      if (users.length == 0) {
         result["status"] = "error";
-        result["error"] = error;
+        result["error"] = "User does not exist";
       } else {
-        if (users.length == 0) {
-          result["status"] = "error";
-          result["error"] = "User does not exist";
-        } else {
-          result["status"] = "success";
-          result["data"] = users[0];
-        }
+        result["status"] = "success";
+        result["data"] = users[0];
       }
-  
-      response.send(result);
-    });
-  
- 
+    }
+
+    response.send(result);
+  });
 });
 
 userRouter.post("/user/signup", (request, response) => {

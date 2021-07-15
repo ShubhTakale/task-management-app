@@ -23,23 +23,62 @@ taskRouter.get("/tasks", (request, response) => {
 });
 
 taskRouter.get("/tasks/today", (request, response) => {
-    const userId = request.userId;
-    const statement = `select id, title, description,date, is_completed from tasks where user_id = '${userId}' and date = System.now()`;
-  
-    db.execute(statement, (error, tasks) => {
-      if (error) {
-        response.send({
-          status: "error",
-          error: error,
-        });
-      } else {
-        response.send({
-          status: "success",
-          data: tasks,
-        });
-      }
-    });
+  const userId = request.userId;
+  const statement = `select id, title, description,date, is_completed from tasks where user_id = '${userId}' and date = current_date()`;
+
+  db.execute(statement, (error, tasks) => {
+    if (error) {
+      response.send({
+        status: "error",
+        error: error,
+      });
+    } else {
+      response.send({
+        status: "success",
+        data: tasks,
+      });
+    }
   });
+});
+
+taskRouter.get("/tasks/in-progress", (request, response) => {
+  const userId = request.userId;
+  const statement = `select id, title, description,date, is_completed from tasks where user_id = '${userId}' and is_completed = 0`;
+
+  db.execute(statement, (error, tasks) => {
+    if (error) {
+      response.send({
+        status: "error",
+        error: error,
+      });
+    } else {
+      response.send({
+        status: "success",
+        data: tasks,
+      });
+    }
+  });
+});
+
+taskRouter.get("/tasks/completed", (request, response) => {
+  const userId = request.userId;
+  const statement = `select id, title, description,date, is_completed from tasks where user_id = '${userId}' and is_completed = 1`;
+
+  db.execute(statement, (error, tasks) => {
+    if (error) {
+      response.send({
+        status: "error",
+        error: error,
+      });
+    } else {
+      response.send({
+        status: "success",
+        data: tasks,
+      });
+    }
+  });
+});
+
 taskRouter.post("/tasks", (request, response) => {
   const userId = request.userId;
   const { title, description, date } = request.body;
@@ -64,7 +103,7 @@ taskRouter.delete("/tasks/:taskId", (request, response) => {
   const userId = request.userId;
   const taskId = request.params.taskId;
   const statement = `delete from tasks where id = '${taskId}' and user_id = '${userId}'`;
-
+  
   db.execute(statement, (error, data) => {
     if (error) {
       response.send({
