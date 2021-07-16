@@ -1,18 +1,319 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#login {
+  width: 100%;
+  height: 100vh;
+  background-color: #c4c4c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#login .my-container {
+  width: 52vw;
+  height: 55vh;
+  background-color: white;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  border-radius: 15px;
+}
+
+#login .my-container .content {
+  width: 50%;
+  height: 100%;
+}
+#login .my-container .content:first-child {
+  border-radius: 15px;
+  background-color: #03015d;
   color: white;
 }
+#login .my-container .content:first-child .inside {
+  padding: 10vh 3.5vw;
+}
 
-.App-link {
-  color: #61dafb;
+#login .my-container .content:nth-child(2) {
+  border-radius: 15px;
+  background-color: #fff;
+}
+#login .my-container .content:nth-child(2) .inside {
+  position: relative;
+  height: 100%;
+  padding: 10vh 3.5vw;
+}
+
+.button .btn {
+  background: rgb(17, 38, 93);
+  color: white;
+}
+.button {
+  margin-top: 10px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+#link {
+  text-decoration: none !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+#signup {
+  width: 100%;
+  height: 100vh;
+  background-color: #c4c4c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+#signup .my-container {
+  width: 55vw;
+  height: 75vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+#signup .my-container .content {
+  width: 50%;
+  height: 100%;
+}
+#signup .my-container .content:nth-child(2) .inside {
+  padding: 6vh 3.5vw;
+}
+
+#signup .my-container .content:nth-child(1) {
+  border-radius: 15px;
+  background-color: #03015d;
+  color: white;
+}
+#signup .my-container.content:nth-child(2) {
+  border-radius: 15px;
+  background-color: #ffffff;
+}
+#signup .my-container .content:nth-child(1) .inside {
+  position: relative;
+  height: 100%;
+  padding: 18vh 3.5vw;
+}
+
+.Sidebar {
+  height: 100vh;
+  width: 200px;
+  border-right: solid 1px grey;
+  /* padding-left: 20; */
+  /* background-color: rgb(50,63,81); */
+}
+
+.SidebarList {
+  height: auto;
+  width: 100%;
+}
+.SidebarList .row:hover {
+  cursor: pointer;
+  background-color: rgb(228, 222, 222);
+}
+
+.SidebarList #active {
+  background-color: rgb(228, 222, 222);
+}
+.SidebarList .row {
+  width: 100%;
+  height: 100px;
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.row #icon {
+  flex: 30%;
+  display: grid;
+  place-items: center;
+}
+
+.row #title {
+  flex: 70%;
+}
+
+#main {
+  display: flex;
+  z-index: 15;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 12vh;
+  border-bottom: 0.5px solid #ebebeb;
+  padding: 10px 40px 10px 30px;
+  z-index: 105;
+}
+/* Left Section */
+#navbar .left-section-navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+}
+
+#navbar .left-section-navbar .home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 60px;
+  font-size: large;
+}
+
+#navbar .left-section-navbar .home .link {
+  text-decoration: none !important;
+  color: #000;
+}
+#navbar .left-section-navbar .home .link:hover {
+  color: blue;
+}
+
+#navbar .right-section-navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#navbar .right-section-navbar .profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: -60px;
+  font-size: large;
+}
+
+#navbar .right-section-navbar .profile .link {
+  text-decoration: none !important;
+  color: #000;
+}
+
+#navbar .right-section-navbar .profile .link:hover {
+  color: blue;
+}
+
+#navbar .right-section-navbar .profile:hover {
+  color: blue;
+}
+
+#navbar .right-section-navbar .logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  float: right;
+  position: relative;
+  font-size: large;
+}
+
+.Tasks {
+  width: 80%;
+  height: 88vh;
+  overflow-y: auto;
+  padding-bottom: 40px;
+}
+
+.Tasks .content {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 45px;
+}
+.tasky {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tasky .tasky-content {
+  display: grid;
+  column-gap: 15px;
+  row-gap: 25px;
+  padding: 10px 0px;
+}
+
+.tasky .tasky-content {
+  grid-template-columns: repeat(3, 23.5vw);
+}
+
+.card {
+  position: relative;
+  background: white;
+  box-shadow: 0px 2px 4px 1px #dadadac7;
+  border-radius: 15px;
+  transition: 0.5s ease-in;
+}
+
+.close-icon {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  z-index: 10;
+  float: right;
+}
+
+.add-task-form {
+  width: 600px;
+  height: 400px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #000;
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: unset;
+  padding: 0%;
+}
+.btn-add-task {
+  margin-top: 10px;
+  align-items: center;
+}
+
+.card .title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: large;
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.card .description {
+  padding: 10px;
+}
+
+.card .date {
+  padding: 10px;
+}
+
+.btn:hover{
+  color: #000;
 }
